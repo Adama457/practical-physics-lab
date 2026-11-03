@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10243a">
+<title>Practical Physics Lab | Vernier Caliper Lab</title>
+<style>
+:root{--navy:#10243a;--navy2:#183a56;--teal:#087f70;--mint:#dff5ef;--orange:#d97728;--ink:#182b3c;--muted:#627487;--line:#d9e2e9;--paper:#f4f7f9;--white:#fff;--red:#b94242;--green:#177b58}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(125deg,var(--navy),#1b4964);color:white;padding:22px max(18px,calc((100% - 1050px)/2))}
+.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:44px;height:44px;border-radius:13px;background:#b8eee0;color:#123b45;display:grid;place-items:center;font-size:24px}
+.eyebrow{font-size:11px;letter-spacing:.13em;color:#b8d5e4;font-weight:800}.brand h1{font-size:20px;letter-spacing:.04em;margin:0}.hero{margin-top:20px}.hero h2{font-size:clamp(25px,5vw,38px);line-height:1.1;margin:0 0 8px}.hero p{color:#d2e0e9;max-width:680px;margin:0}
+.wrap{max-width:1050px;margin:22px auto;padding:0 16px 50px}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.pill{display:inline-flex;align-items:center;border-radius:99px;padding:5px 10px;font-size:11px;font-weight:800;letter-spacing:.04em;background:#e4f1f8;color:#23516c}.pill.green{background:#def3e9;color:#176647}.pill.orange{background:#fff0df;color:#985316}
+.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.8fr);gap:16px}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 3px 14px #142b3d08}.card h3{font-size:17px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 15px}
+.instrument{background:linear-gradient(#f5f8fa,#eaf0f4);border:1px solid #d5e0e8;border-radius:12px;padding:10px;overflow:hidden}
+svg{display:block;width:100%;height:auto}.scale-label{font-size:10px;fill:#385268}.scale-num{font-size:11px;fill:#263f53;font-weight:700}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.metric{background:#f5f8fa;border:1px solid var(--line);border-radius:10px;padding:10px}.metric span{display:block;font-size:11px;color:var(--muted)}.metric strong{font-size:19px;color:var(--navy);font-variant-numeric:tabular-nums}
+.control{margin-top:14px}.control label{display:flex;justify-content:space-between;gap:10px;font-weight:700;font-size:13px;margin-bottom:6px}input[type=range]{width:100%;accent-color:var(--teal)}.hint{font-size:12px;color:var(--muted)}
+.formula{background:#edf7f5;border:1px solid #cce8e1;border-radius:10px;padding:12px;margin-top:12px}.formula strong{color:#075e53}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.tab{border:1px solid var(--line);background:white;color:var(--ink);border-radius:9px;padding:8px 12px;font-weight:700;cursor:pointer}.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+button{font:inherit;cursor:pointer}.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--teal);color:white;font-weight:800}.btn.secondary{background:#eaf0f4;color:var(--navy);border:1px solid var(--line)}.btn.dark{background:var(--navy)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.question{border-top:1px solid var(--line);padding:14px 0}.question:first-child{border-top:0}.qmeta{font-size:10px;font-weight:900;letter-spacing:.1em;color:var(--muted)}.question h4{font-size:14px;margin:5px 0 10px}.options{display:grid;gap:7px}.option{display:flex;gap:9px;align-items:flex-start;padding:9px 10px;border:1px solid var(--line);border-radius:9px;cursor:pointer}.option:has(input:checked){border-color:#4c9f90;background:#eff9f6}.option input{margin-top:4px;accent-color:var(--teal)}.feedback{font-size:13px;padding:10px;border-radius:9px;margin-top:9px}.correct{background:#e5f5ec;color:#176647}.incorrect{background:#fff0ed;color:#963c34}
+.progress{height:8px;background:#e8eef2;border-radius:9px;overflow:hidden}.progress>div{height:100%;background:var(--teal);width:0;transition:width .2s}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{text-align:center;background:#f5f8fa;border-radius:10px;padding:11px 6px}.stat b{font-size:21px;display:block;color:var(--navy)}.stat small{font-size:11px;color:var(--muted)}
+.notice{font-size:12px;color:var(--muted);background:#f5f8fa;padding:10px;border-radius:9px;margin-top:12px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:18px}
+.hidden{display:none!important}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.wrap{margin-top:14px}.card{padding:15px}.readout{grid-template-columns:repeat(3,1fr)}header{padding:18px}.hero{margin-top:16px}}
+@media(max-width:380px){.readout{grid-template-columns:1fr 1fr}.readout .metric:last-child{grid-column:span 2}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="brand-icon">⚗</div><div><div class="eyebrow">STEM EXPLORER · EXPERIMENT 001</div><h1>PRACTICAL PHYSICS LAB</h1></div></div>
+ <div class="hero"><h2>Vernier Caliper Measurement Lab</h2><p>Learn to read a vernier scale, correct zero error and solve IGCSE-style practical questions through guided experiments.</p></div>
+</header>
+<main class="wrap">
+ <div class="topline"><span class="pill green">● Interactive laboratory</span><span class="pill">Cambridge IGCSE Physics 0625 · Learning prototype</span></div>
+ <div class="layout">
+  <section class="card">
+   <div class="row"><div><h3>01 · Virtual instrument</h3><p class="sub">Move the slider to open or close the jaws. The scale and reading update together.</p></div><span class="pill">Least count: 0.1 mm</span></div>
+   <div class="instrument">
+    <svg id="caliper" viewBox="0 0 760 250" role="img" aria-label="Interactive vernier caliper with main and vernier scales">
+     <defs><linearGradient id="beam" x2="0" y2="1"><stop stop-color="#d9e3e9"/><stop offset=".45" stop-color="#f8fbfc"/><stop offset="1" stop-color="#aebdc8"/></linearGradient><linearGradient id="slider" x2="0" y2="1"><stop stop-color="#f7c17e"/><stop offset="1" stop-color="#b96b26"/></linearGradient></defs>
+     <rect x="34" y="105" width="690" height="36" rx="5" fill="url(#beam)" stroke="#71899a" stroke-width="2"/>
+     <rect x="34" y="105" width="690" height="7" rx="3" fill="#fff" opacity=".8"/>
+     <g id="mainTicks"></g><g id="mainLabels"></g>
+     <g id="fixedJaw"><path d="M80 105 V40 H96 V105 M80 141 V208 H96 V141" fill="#1c6487" stroke="#12415e" stroke-width="2"/><path d="M74 40 H102 V49 H74Z M74 199 H102 V208 H74Z" fill="#1c6487"/></g>
+     <g id="movingJaw"><rect id="sliderBody" x="300" y="91" width="16" height="64" rx="3" fill="url(#slider)" stroke="#96531d" stroke-width="2"/><path id="upperJaw" d="M300 105 V40 H316 V105 M296 40 H320 V49 H296Z" fill="#d88737" stroke="#96531d" stroke-width="2"/><path id="lowerJaw" d="M300 141 V208 H316 V141 M296 199 H320 V208 H296Z" fill="#d88737" stroke="#96531d" stroke-width="2"/><rect id="vernierPlate" x="280" y="91" width="56" height="64" rx="4" fill="#f5c68e" opacity=".35" stroke="#a76529"/><g id="vernierTicks"></g></g>
+     <text x="36" y="23" class="scale-label">MAIN SCALE (mm)</text><text x="365" y="23" class="scale-label">VERNIER SCALE (0.1 mm divisions)</text>
+     <text x="36" y="237" class="scale-label">FIXED JAW</text><text id="jawLabel" x="300" y="237" class="scale-label">MOVABLE JAW</text>
+    </svg>
+    <div class="hint">Schematic scale: each main-scale division = 1 mm; 10 vernier divisions = 9 mm. Readings are simulated accurately to 0.1 mm.</div>
+   </div>
+   <div class="control"><label for="position"><span>Jaw position</span><strong id="positionText">4.6 mm</strong></label><input id="position" type="range" min="0" max="100" step="1" value="46"><div class="row hint"><span>0.0 mm</span><span>10.0 mm</span></div></div>
+   <div class="readout">
+    <div class="metric"><span>Main scale reading</span><strong id="msr">24 mm</strong></div>
+    <div class="metric"><span>Coinciding division</span><strong id="vd">6</strong></div>
+    <div class="metric"><span>Observed reading</span><strong id="observed">24.6 mm</strong></div>
+   </div>
+   <div class="formula"><strong>Reading = MSR + (VD × LC)</strong><br><span id="calculation">24 + (6 × 0.1) = 24.6 mm</span></div>
+   <div class="notice">Instrument model note: the scale is displayed schematically for a compact phone-friendly layout. The mathematical relationship between the main scale, vernier division and least count is represented correctly.</div>
+  </section>
+  <aside class="card">
+   <h3>02 · Zero-error experiment</h3><p class="sub">Close the jaws completely. A perfect instrument should read zero.</p>
+   <div class="tabs"><button class="tab active" data-zero="0">No error</button><button class="tab" data-zero="2">Positive error</button><button class="tab" data-zero="-2">Negative error</button></div>
+   <div class="statgrid">
+    <div class="stat"><b id="zeroObserved">0.0</b><small>Zero reading (mm)</small></div>
+    <div class="stat"><b id="zeroError">0.0</b><small>Zero error (mm)</small></div>
+    <div class="stat"><b id="zeroCorrection">0.0</b><small>Correction (mm)</small></div>
+   </div>
+   <div class="formula"><strong>Corrected reading = Observed reading − Zero error</strong><p id="zeroExplain" style="margin:7px 0 0;font-size:13px">The instrument has no zero error. The observed reading is the corrected reading.</p></div>
+   <div class="control"><label for="objectReading"><span>Object's observed reading</span><strong><span id="objectText">4.6</span> mm</strong></label><input id="objectReading" type="range" min="10" max="100" value="46" step="1"></div>
+   <div class="stat" style="margin-top:10px"><b id="corrected">4.6 mm</b><small>Corrected object measurement</small></div>
+   <div class="notice">Positive zero error: subtract it. Negative zero error: subtracting a negative value means adding its magnitude.</div>
+   <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+   <h3>03 · Your learning record</h3><p class="sub">Your progress is saved locally in this browser on this device.</p>
+   <div class="statgrid"><div class="stat"><b id="attempts">0</b><small>Attempts</small></div><div class="stat"><b id="best">—</b><small>Best score</small></div><div class="stat"><b id="completion">0%</b><small>Completion</small></div></div>
+   <div class="progress" style="margin-top:12px"><div id="progressBar"></div></div>
+   <p class="hint" id="progressText">Complete the five-question assessment to record your first result.</p>
+   <button class="btn secondary" id="clearProgress" style="width:100%;margin-top:8px">Reset saved progress</button>
+  </aside>
+ </div>
+ <section class="card" style="margin-top:16px">
+  <div class="row"><div><h3>04 · IGCSE examination challenge</h3><p class="sub">Five original questions covering Core and Extended practical skills.</p></div><span class="pill orange">5 questions</span></div>
+  <div class="tabs"><button class="tab active" data-level="all">All questions</button><button class="tab" data-level="Core">Core</button><button class="tab" data-level="Extended">Extended</button></div>
+  <div id="questions"></div>
+  <div class="row" style="margin-top:12px"><span class="hint" id="answered">0 of 5 answered</span><button class="btn" id="submit" disabled>Submit assessment</button></div>
+  <div id="results" class="hidden" style="margin-top:15px"></div>
+  <div class="row" style="margin-top:12px"><button class="btn secondary" id="retry">Try again</button><button class="btn dark" id="certificate" disabled>Download certificate</button></div>
+ </section>
+ <footer>Practical Physics Lab · STEM Explorer · Experiment 001<br>Independent educational prototype. Not affiliated with Cambridge International Education.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const questions=[
+ {level:"Core",q:"What is the main purpose of a vernier caliper?",opts:["Measure temperature","Measure internal and external dimensions and depth","Measure mass","Measure electric current"],a:1,why:"A vernier caliper can measure external dimensions, internal dimensions and depth. It offers finer resolution than an ordinary ruler."},
+ {level:"Core",q:"The main scale reading is 24 mm. The 6th vernier division coincides. The least count is 0.1 mm. What is the observed reading?",opts:["24.06 mm","24.6 mm","30.0 mm","23.4 mm"],a:1,why:"Observed reading = MSR + (VD × LC) = 24 + (6 × 0.1) = 24.6 mm."},
+ {level:"Core",q:"Ten vernier divisions equal nine main-scale divisions. One main-scale division is 1 mm. What is the least count?",opts:["1.0 mm","0.9 mm","0.1 mm","10 mm"],a:2,why:"One vernier division = 9/10 = 0.9 mm. Least count = 1.0 − 0.9 = 0.1 mm."},
+ {level:"Extended",q:"A caliper gives an observed reading of 18.4 mm and has a positive zero error of +0.2 mm. What is the corrected reading?",opts:["18.6 mm","18.4 mm","18.2 mm","18.0 mm"],a:2,why:"Corrected reading = observed reading − zero error = 18.4 − (+0.2) = 18.2 mm."},
+ {level:"Extended",q:"A cylinder's diameter is measured three times: 12.4 mm, 12.5 mm and 12.3 mm. What is the mean diameter?",opts:["12.3 mm","12.4 mm","12.5 mm","37.2 mm"],a:1,why:"Mean = (12.4 + 12.5 + 12.3) ÷ 3 = 12.4 mm. Repeated readings help reduce the effect of random variation."}
+];
+let level="all",answers={},submitted=false,score=null,zero=0;
+const saved=()=>{try{return JSON.parse(localStorage.getItem("pplab-progress")||'{"attempts":0,"best":null,"completed":false}')}catch(e){return {attempts:0,best:null,completed:false}}};
+function saveProgress(s){localStorage.setItem("pplab-progress",JSON.stringify(s));renderProgress()}
+function renderProgress(){let p=saved();$("attempts").textContent=p.attempts;$("best").textContent=p.best===null?"—":p.best+"/5";$("completion").textContent=p.completed?"100%":"0%";$("progressBar").style.width=p.completed?"100%":"0%";$("progressText").textContent=p.completed?"Assessment completed. Your best score is "+p.best+"/5.":"Complete the five-question assessment to record your first result."}
+function drawScale(){
+ const x0=100,step=52,main=$("mainTicks"),labels=$("mainLabels"),vt=$("vernierTicks");main.innerHTML="";labels.innerHTML="";vt.innerHTML="";
+ for(let i=0;i<=12;i++){let x=x0+i*step;main.innerHTML+=`<line x1="${x}" y1="105" x2="${x}" y2="${i%5===0?75:88}" stroke="#29465c" stroke-width="${i%5===0?2:1.3}"/>`;if(i%5===0)labels.innerHTML+=`<text x="${x}" y="65" text-anchor="middle" class="scale-num">${i}</text>`}
+ let mm=Number($("position").value)/10,msr=Math.floor(mm+1e-8),vd=Math.round((mm-msr)*10),jaw=100+mm*step;
+ $("movingJaw").setAttribute("transform",`translate(${jaw-300},0)`);
+ for(let i=0;i<=10;i++){let x=300+i*step*.9;vt.innerHTML+=`<line x1="${x}" y1="141" x2="${x}" y2="${i%5===0?169:159}" stroke="#8d4f1d" stroke-width="${i%5===0?2:1.2}"/>`}
+ $("jawLabel").setAttribute("x",Math.min(jaw,650));$("jawLabel").textContent="MOVABLE JAW";
+ $("positionText").textContent=mm.toFixed(1)+" mm";$("msr").textContent=msr+" mm";$("vd").textContent=vd;$("observed").textContent=mm.toFixed(1)+" mm";$("calculation").textContent=`${msr} + (${vd} × 0.1) = ${mm.toFixed(1)} mm`;
+ $("objectReading").value=Math.round(mm*10);updateObject();
+}
+function updateObject(){let v=Number($("objectReading").value)/10;$("objectText").textContent=v.toFixed(1);$("corrected").textContent=(v-zero/10).toFixed(1)+" mm"}
+function setZero(z){zero=z;document.querySelectorAll("[data-zero]").forEach(b=>b.classList.toggle("active",Number(b.dataset.zero)===z));let zmm=z/10;$("zeroObserved").textContent=zmm.toFixed(1);$("zeroError").textContent=(zmm>0?"+":"")+zmm.toFixed(1);$("zeroCorrection").textContent=(-zmm).toFixed(1);$("zeroExplain").textContent=z===0?"The instrument has no zero error. The observed reading is the corrected reading.":z>0?"Positive zero error: the instrument reads too high when closed. Subtract +"+zmm.toFixed(1)+" mm from the observed reading.":"Negative zero error: the instrument reads below zero when closed. Subtract "+zmm.toFixed(1)+" mm (equivalent to adding 0.2 mm).";updateObject()}
+function renderQuestions(){let list=questions.map((q,i)=>({q,i})).filter(x=>level==="all"||x.q.level===level);$("questions").innerHTML=list.map(({q,i})=>`<div class="question"><div class="qmeta">QUESTION ${i+1} · ${q.level.toUpperCase()}</div><h4>${q.q}</h4><div class="options">${q.opts.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}" ${answers[i]===j?"checked":""} ${submitted?"disabled":""}><span>${String.fromCharCode(65+j)}. ${o}</span></label>`).join("")}</div>${submitted?`<div class="feedback ${answers[i]===q.a?"correct":"incorrect"}"><strong>${answers[i]===q.a?"Correct!":"Not quite. Correct answer: "+String.fromCharCode(65+q.a)+". "+q.opts[q.a]}</strong><br>${q.why}</div>`:""}</div>`).join("");
+ document.querySelectorAll('#questions input').forEach(el=>el.addEventListener("change",e=>{answers[Number(e.target.name.slice(1))]=Number(e.target.value);updateAnswered()}));updateAnswered()}
+function updateAnswered(){$("answered").textContent=Object.keys(answers).length+" of 5 answered";$("submit").disabled=submitted||Object.keys(answers).length!==5}
+function submit(){score=questions.reduce((n,q,i)=>n+(answers[i]===q.a?1:0),0);submitted=true;let p=saved();p.attempts++;p.best=p.best===null?score:Math.max(p.best,score);p.completed=true;saveProgress(p);renderQuestions();$("results").classList.remove("hidden");$("results").innerHTML=`<div class="formula"><h3 style="margin:0 0 5px">Assessment result: ${score}/5</h3><strong>${score===5?"Excellent work!":score>=4?"Very good work!":score>=3?"Good effort — keep practising.":"Keep practising and review the explanations."}</strong><p style="margin:6px 0 0">Your best score is ${p.best}/5. Your progress has been saved in this browser.</p></div>`;$("submit").disabled=true;$("certificate").disabled=false}
+function resetQuiz(){answers={};submitted=false;score=null;$("results").classList.add("hidden");$("certificate").disabled=true;renderQuestions()}
+function certificateSvg(){let p=saved(),s=score===null?(p.best??0):score;let name=prompt("Enter the student's name for the certificate:","IGCSE Physics Student");if(name===null)return;name=name.trim()||"IGCSE Physics Student";let date=new Date().toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"});let safe=name.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));let svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850"><rect width="1200" height="850" fill="#f4f7f9"/><rect x="35" y="35" width="1130" height="780" rx="18" fill="white" stroke="#173b55" stroke-width="5"/><rect x="55" y="55" width="1090" height="740" rx="12" fill="none" stroke="#c5d6df" stroke-width="2"/><text x="600" y="155" text-anchor="middle" font-family="Arial" font-size="25" letter-spacing="7" fill="#087f70" font-weight="bold">PRACTICAL PHYSICS LAB</text><text x="600" y="260" text-anchor="middle" font-family="Georgia" font-size="58" fill="#10243a">Certificate of Achievement</text><text x="600" y="335" text-anchor="middle" font-family="Arial" font-size="24" fill="#627487">This certificate is proudly presented to</text><text x="600" y="435" text-anchor="middle" font-family="Georgia" font-size="52" fill="#087f70">${safe}</text><path d="M250 460H950" stroke="#b9cbd5" stroke-width="2"/><text x="600" y="525" text-anchor="middle" font-family="Arial" font-size="24" fill="#263f53">For completing the Vernier Caliper Measurement Lab</text><text x="600" y="575" text-anchor="middle" font-family="Arial" font-size="22" fill="#263f53">Assessment score: ${s}/5</text><text x="600" y="650" text-anchor="middle" font-family="Arial" font-size="19" fill="#627487">Completed on ${date}</text><text x="600" y="735" text-anchor="middle" font-family="Arial" font-size="16" fill="#627487">STEM Explorer · Independent educational learning prototype</text></svg>`;let blob=new Blob([svg],{type:"image/svg+xml"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="Practical-Physics-Lab-Certificate.svg";a.click();URL.revokeObjectURL(url)}
+$("position").addEventListener("input",drawScale);$("objectReading").addEventListener("input",updateObject);document.querySelectorAll("[data-zero]").forEach(b=>b.addEventListener("click",()=>setZero(Number(b.dataset.zero))));document.querySelectorAll("[data-level]").forEach(b=>b.addEventListener("click",()=>{level=b.dataset.level;document.querySelectorAll("[data-level]").forEach(x=>x.classList.toggle("active",x===b));renderQuestions()}));$("submit").addEventListener("click",submit);$("retry").addEventListener("click",resetQuiz);$("certificate").addEventListener("click",certificateSvg);$("clearProgress").addEventListener("click",()=>{if(confirm("Clear saved learning progress on this device?")){localStorage.removeItem("pplab-progress");renderProgress()}});drawScale();setZero(0);renderQuestions();renderProgress();
+</script>
+</body>
+</html>
