@@ -101,7 +101,7 @@ const questions=[
  {level:"Extended",q:"A caliper gives an observed reading of 18.4 mm and has a positive zero error of +0.2 mm. What is the corrected reading?",opts:["18.6 mm","18.4 mm","18.2 mm","18.0 mm"],a:2,why:"Corrected reading = observed reading − zero error = 18.4 − (+0.2) = 18.2 mm."},
  {level:"Extended",q:"A cylinder's diameter is measured three times: 12.4 mm, 12.5 mm and 12.3 mm. What is the mean diameter?",opts:["12.3 mm","12.4 mm","12.5 mm","37.2 mm"],a:1,why:"Mean = (12.4 + 12.5 + 12.3) ÷ 3 = 12.4 mm. Repeated readings help reduce the effect of random variation."}
 ];
-let level="all",answers={},submitted=false,score=null,zero=0;
+let level="all",answers={},submitted=false,score=null,scoreTotal=0,zero=0;
 const saved=()=>{try{return JSON.parse(localStorage.getItem("pplab-progress")||'{"attempts":0,"best":null,"completed":false}')}catch(e){return {attempts:0,best:null,completed:false}}};
 function saveProgress(s){localStorage.setItem("pplab-progress",JSON.stringify(s));renderProgress()}
 function renderProgress(){let p=saved();$("attempts").textContent=p.attempts;$("best").textContent=p.best===null?"—":p.best+"/5";$("completion").textContent=p.completed?"100%":"0%";$("progressBar").style.width=p.completed?"100%":"0%";$("progressText").textContent=p.completed?"Assessment completed. Your best score is "+p.best+"/5.":"Complete the five-question assessment to record your first result."}
